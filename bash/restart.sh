@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo systemctl restart homeware
-sudo systemctl restart homewareMQTT
-sudo systemctl restart homewareTasks
+systemctl restart homeware
+systemctl restart homewareMQTT
+systemctl restart homewareTasks

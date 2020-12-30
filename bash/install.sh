@@ -11,42 +11,42 @@ case "$response" in
         echo "Cloning the respository."
         echo "---------------------------------------------"
         cd /usr/share
-        sudo apt-get update
-        sudo apt install git -y
-        sudo git clone https://github.com/kikeelectronico/Homeware-LAN.git
+        apt-get update
+        apt install git -y
+        git clone https://github.com/kikeelectronico/Homeware-LAN.git
         # cd Homeware-LAN
         # git checkout alpha
         # cd ../
-        sudo chmod -R 777 Homeware-LAN
+        chmod -R 777 Homeware-LAN
         cd Homeware-LAN
         echo "Installing Homeware-LAN and its dependencies."
         echo "---------------------------------------------"
-        sudo apt install python3-pip -y
+        apt install python3-pip -y
         cd back
-        sudo pip3 install install -r requirements.txt
+        pip3 install install -r requirements.txt
         cd ../
-        sudo apt install nginx -y
-        sudo apt install software-properties-common -y
-        sudo apt install certbot python3-certbot-nginx -y
-        sudo apt install curl -y
-        sudo apt install mosquitto mosquitto-clients -y
-        sudo apt install redis-server -y
-        # sudo apt install npm -y
+        apt install nginx -y
+        apt install software-properties-common -y
+        apt install certbot python3-certbot-nginx -y
+        apt install curl -y
+        apt install mosquitto mosquitto-clients -y
+        apt install redis-server -y
+        # apt install npm -y
         echo "Install the new services."
         echo "---------------------------------------------"
-        sudo cp configuration_templates/homeware.service /lib/systemd/system/
-        sudo cp configuration_templates/homewareMQTT.service /lib/systemd/system/
-        sudo cp configuration_templates/homewareTasks.service /lib/systemd/system/
+        cp configuration_templates/homeware.service /lib/systemd/system/
+        cp configuration_templates/homewareMQTT.service /lib/systemd/system/
+        cp configuration_templates/homewareTasks.service /lib/systemd/system/
 
-        sudo systemctl daemon-reload
+        systemctl daemon-reload
 
-        sudo systemctl enable homeware
-        sudo systemctl enable homewareMQTT
-        sudo systemctl enable homewareTasks
+        systemctl enable homeware
+        systemctl enable homewareMQTT
+        systemctl enable homewareTasks
 
-        sudo systemctl start homeware
-        sudo systemctl start homewareMQTT
-        sudo systemctl start homewareTasks
+        systemctl start homeware
+        systemctl start homewareMQTT
+        systemctl start homewareTasks
         # echo
         # read -r -p "Press enter to continue." e
         # clear
@@ -89,7 +89,7 @@ case "$response" in
         echo "---------------------------------------------"
         read -r -p "Type your DDNS Hostname (ecample: yourdomain.ddns.com ):" hostname
         cd bash
-        sudo sh confignginx.sh $hostname
+        sh confignginx.sh $hostname
         cd ../
         curl -X GET http://localhost:5001/api/settings/domain/$hostname/
         echo
@@ -123,7 +123,7 @@ case "$response" in
         echo
         echo "Follow the Certbot instructions. When Certbot ask you about redirecting http to https, enable it."
         echo
-        sudo certbot --nginx
+        certbot --nginx
         echo
         read -r -p "Press enter to continue." e
         clear
