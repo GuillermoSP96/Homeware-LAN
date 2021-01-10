@@ -13,7 +13,8 @@ case "$response" in
         cd /usr/share
         apt-get update
         apt install git -y
-        git clone https://github.com/kikeelectronico/Homeware-LAN.git
+        #git clone https://github.com/kikeelectronico/Homeware-LAN.git
+        git clone https://github.com/GuillermoSP96/Homeware-LAN.git
         # cd Homeware-LAN
         # git checkout alpha
         # cd ../
