@@ -4,6 +4,8 @@ Homeware is a _Google Home Provider Cloud Service_, a complete ecosystem that al
 
 Homeware containts a backend that does the integration and a web forntend that allows you to manage your devices and program tasks.
 
+Note: You need the open ports 80,443,5001,1883 to correct operation or add the Homeware-LAN device to the DMZ (the DMZ is not recommended)
+
 ## Homeware has been tested on
 
 | Operating System | Version |
