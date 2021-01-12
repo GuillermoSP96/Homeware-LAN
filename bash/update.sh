@@ -5,10 +5,10 @@
 echo "The upgrader has started.\r\n"
 
 #Pull from the repository
-git pull
+sudo git pull -f
 
 #Update Python modules
-pip3 install -r requirements.txt
+pip3 install -r ../back/requirements.txt
 
 #Build the UI
 # cd web
@@ -16,8 +16,8 @@ pip3 install -r requirements.txt
 # npm run build
 
 #Start services
-systemctl restart homewareMQTT
-systemctl restart homewareTasks
-systemctl restart homeware
+sudo systemctl restart homewareMQTT
+sudo systemctl restart homewareTasks
+sudo systemctl restart homeware
 
 echo "\r\The upgrader has finished.\r\n"
