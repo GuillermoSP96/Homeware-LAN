@@ -4,25 +4,48 @@ Homeware is a _Google Home Provider Cloud Service_, a complete ecosystem that al
 
 Homeware containts a backend that does the integration and a web forntend that allows you to manage your devices and program tasks.
 
-Note: You need the open ports 80,443,5001,1883 to correct operation or add the Homeware-LAN device to the DMZ (the DMZ is not recommended)
+# Install without docker compose
 
-## Homeware has been tested on
-
-| Operating System | Version |
-|-------|-------|
-| Ubuntu | 20.04 |
-| Raspbian Pi OS (32-bit) Lite| August 2020 |
-
-# Install
+Homeware can be installed in directly on Debian, Ubuntu or Raspbian. Once you got your platform ready follow these instructions.
 
 1. Open a terminal window in your Raspberry Pi and run:
+
 ```
 wget https://raw.githubusercontent.com/kikeelectronico/Homeware-LAN/master/bash/install.sh
 ```
+
 ```
 sudo sh install.sh
 ```
+
 2. Follow the instructions that appear in the screen.
+
+# Install with Docker Compose
+
+1. Clone the repo and cd into it  
+```bash
+git clone git@github.com:kikeelectronico/Homeware-LAN.git
+cd Homeware-LAN
+```
+2. Create your own `.env` file from `.env.template`. Data will be used to generate certs on letsencrypt.  
+3. Start the project  
+```bash
+docker-compose up -d
+```
+4. Configure the server
+```bash
+curl -d '{"user":"YOURUSER", "pass":"YOURPASSWORD"}' -H "Content-Type: application/json" -X POST https://YOURDOMAIN/api/user/set/
+curl -X GET https://YOURDOMAIN/api/settings/domain/YOURDOMAIN/
+curl -X GET https://YOURDOMAIN/api/settings/setAssistantDone/
+```
+5. Configure MQTT credentials at https://YOURDOMAIN/settings with the defaults:  
+```
+user: mosquitto
+pass: homewarelan123
+```
+You may create a different `mosquitto_passwd` file following [these steps](https://mosquitto.org/man/mosquitto_passwd-1.html)  
+
+6. Follow this steps to link Homeware with Google Home: https://kikeelectronico.github.io/Homeware-LAN/docs/connect-with-google
 
 # Stay up to date
 
@@ -30,7 +53,7 @@ Spanish Telegram channel: [https://t.me/homeware_up_to_date](https://t.me/homewa
 
 # Contribute
 
-Read [CONTRIBUTING.md](http://localhost:3000/Homeware-LAN/docs/contributing/) and [CODE_OF_CONDUCT.md](http://localhost:3000/Homeware-LAN/docs/code-of-conduct/).
+Read [CONTRIBUTING.md](https://kikeelectronico.github.io/Homeware-LAN/docs/contributing/) and [CODE_OF_CONDUCT.md](https://kikeelectronico.github.io/Homeware-LAN/docs/code-of-conduct/).
 
 # Documentation
 

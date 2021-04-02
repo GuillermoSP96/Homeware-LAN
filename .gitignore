@@ -1,6 +1,6 @@
 homeware.json
+google.json
 .eslintcache
-build
 
 # Docusaurus generated files
 .docusaurus
@@ -154,6 +154,6 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+build/
 
 *.rdb
